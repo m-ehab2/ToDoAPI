@@ -1,0 +1,23 @@
+{
+	"name": "todoapi",
+	"version": "1.0.0",
+	"description": "The Express API, powered by Express.js and MongoDB, ensures secure authentication and role-based access control. With user roles (User, Admin, SuperAdmin), it efficiently manages to-do lists and tasks. The API's structure prioritizes scalability and security for robust task management applications.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.3.2",
+		"express": "^4.18.2",
+		"joi": "^17.12.0",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.1.0",
+		"morgan": "^1.10.0",
+		"nodemon": "^3.0.3"
+	}
+}
