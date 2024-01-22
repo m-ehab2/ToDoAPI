@@ -25,6 +25,7 @@ The Express API, powered by Express.js and MongoDB, ensures secure authenticatio
    -  Integrate password hashing for security.
    -  Set up JWT (JSON Web Token) for user authentication.
    -  Create middleware for role-based access control.
+   -  _Done_
 
 4. **User Management:**
 

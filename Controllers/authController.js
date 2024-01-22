@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const { validateSignUp, loginSchema } = require('../Utilities/schemaValidation');
 const User = require('../Models/User');
-const generateAuthToken = require('../Utilities/generateAuthToken');
+const { generateAuthToken } = require('../Utilities/TokenUtils');
 require('dotenv').config();
 
 const registerUser = async (req, res, next) => {
