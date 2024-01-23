@@ -6,32 +6,29 @@ The Express API, powered by Express.js and MongoDB, ensures secure authenticatio
 
 1. **Setup and Configuration:**
 
-   -  Set up a new Node.js project.
-   -  Initialize a package.json file.
-   -  Install necessary dependencies (Express, Mongoose, etc.).
-   -  Create basic project structure (folders: routes, models, controllers, config, etc.).
-   -  Set up a basic Express server in `index.js`.
-   -  _Done_
+   -  ~~Set up a new Node.js project.~~
+   -  ~~Initialize a package.json file.~~
+   -  ~~Install necessary dependencies (Express, Mongoose, etc.).~~
+   -  ~~Create basic project structure (folders: routes, models, controllers, config, etc.).~~
+   -  ~~Set up a basic Express server in `index.js`.~~
 
 2. **Database Integration:**
 
-   -  Define Mongoose models for Users, Lists, and ToDos.
-   -  Implement database connection and configuration (in `database.js`).
-   -  _Done_
+   -  ~~Define Mongoose models for Users, Lists, and ToDos.~~
+   -  ~~Implement database connection and configuration (in `database.js`).~~
 
 3. **Authentication and Authorization:**
 
-   -  Implement user registration and login routes.
-   -  Integrate password hashing for security.
-   -  Set up JWT (JSON Web Token) for user authentication.
-   -  Create middleware for role-based access control.
-   -  _Done_
+   -  ~~Implement user registration and login routes.~~
+   -  ~~Integrate password hashing for security.~~
+   -  ~~Set up JWT (JSON Web Token) for user authentication.~~
+   -  ~~Create middleware for role-based access control.~~
 
 4. **User Management:**
 
-   -  Develop routes for viewing and updating user profiles.
-   -  Implement user deletion functionality (for admins).
-   -  Add error handling for user-related operations.
+   -  ~~Develop routes for viewing and updating user profiles.~~
+   -  ~~Implement user deletion functionality (for admins).~~
+   -  ~~Add error handling for user-related operations.~~
 
 5. **List and ToDo Functionality:**
 
