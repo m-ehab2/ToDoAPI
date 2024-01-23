@@ -22,4 +22,23 @@ const createToDo = async (req, res, next) => {
         next(error)
     }
 }
-module.exports = { createToDo }
+const markAsDone = async (req, res, next) => {
+
+}
+const getAllToDos = async (req, res, next) => {
+    try {
+        const listId = req.params.listId;
+        const list = await List.findOne({ _id: listId });
+        if (!list) {
+            throw 'List not Found';
+        }
+        const ToDos = await Todo.find({ list: listId });
+        if (ToDos.length < 1) {
+            throw 'List is Empty'
+        }
+        res.status(201).json({ data: ToDos, message: 'ToDos Fetched Successfully' });
+    } catch (error) {
+        next(error)
+    }
+}
+module.exports = { createToDo, markAsDone, getAllToDos }
