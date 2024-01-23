@@ -1,66 +1,126 @@
 # ToDoAPI
 
-The Express API, powered by Express.js and MongoDB, ensures secure authentication and role-based access control. With user roles (User, Admin, SuperAdmin), it efficiently manages to-do lists and tasks. The API's structure prioritizes scalability and security for robust task management applications.
+The ToDoAPI is a RESTful API built with Express.js and MongoDB, providing secure authentication, role-based access control, and robust task management capabilities. It allows users to create, update, and delete to-do lists and individual tasks, with role-specific functionalities for admins and superadmins.
 
-## Steps
+## Table of Contents
 
-1. **Setup and Configuration:**
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Getting Started](#getting-started)
+   -  [Prerequisites](#prerequisites)
+   -  [Installation](#installation)
+4. [Usage](#usage)
+   -  [Authentication](#authentication)
+   -  [User Profiles](#user-profiles)
+   -  [To-Do Lists](#to-do-lists)
+   -  [Admin and SuperAdmin](#admin-and-superadmin)
+5. [Routes](#routes)
+6. [Error Handling](#error-handling)
+7. [Testing](#testing)
+8. [Documentation](#documentation)
+9. [Contributing](#contributing)
+10.   [License](#license)
 
-   -  ~~Set up a new Node.js project.~~
-   -  ~~Initialize a package.json file.~~
-   -  ~~Install necessary dependencies (Express, Mongoose, etc.).~~
-   -  ~~Create basic project structure (folders: routes, models, controllers, config, etc.).~~
-   -  ~~Set up a basic Express server in `index.js`.~~
+## Introduction
 
-2. **Database Integration:**
+The ToDoAPI is designed to facilitate task management for users with different roles. It includes user authentication, role-based access control (RBAC), and CRUD operations for both to-do lists and individual tasks.
 
-   -  ~~Define Mongoose models for Users, Lists, and ToDos.~~
-   -  ~~Implement database connection and configuration (in `database.js`).~~
+## Features
 
-3. **Authentication and Authorization:**
+-  User registration and login with JWT authentication
+-  Role-based access control (User, Admin, SuperAdmin)
+-  CRUD operations for user profiles
+-  Create, update, and delete to-do lists
+-  Manage individual tasks within a list
+-  Admin and SuperAdmin functionalities
 
-   -  ~~Implement user registration and login routes.~~
-   -  ~~Integrate password hashing for security.~~
-   -  ~~Set up JWT (JSON Web Token) for user authentication.~~
-   -  ~~Create middleware for role-based access control.~~
+## Getting Started
 
-4. **User Management:**
+### Prerequisites
 
-   -  ~~Develop routes for viewing and updating user profiles.~~
-   -  ~~Implement user deletion functionality (for admins).~~
-   -  ~~Add error handling for user-related operations.~~
+Before running the ToDoAPI, ensure you have the following installed:
 
-5. **List and ToDo Functionality:**
+-  Node.js
+-  MongoDB
 
-   -  Design and implement routes for managing to-do lists (create, update, delete).
-   -  Add routes for managing individual to-dos within a list.
-   -  Include error handling and validation for these operations.
+### Installation
 
-6. **Admin and SuperAdmin Features:**
+1. Clone the repository:
 
-   -  Implement routes for admin functionalities (viewing all users, managing users).
-   -  Create routes for SuperAdmin tasks (assigning and revoking admin privileges).
-   -  Ensure appropriate permissions and error handling.
+```bash
+git clone https://github.com/m-ehab2/ToDoAPI.git
+```
 
-7. **Testing:**
+2. Navigate to the project directory:
 
-   -  Write unit tests for critical functions.
-   -  Set up integration tests for API routes.
-   -  Ensure test coverage for authentication, authorization, and core functionalities.
+```bash
+cd ToDoAPI
+```
 
-8. **Documentation and Comments:**
+3. Install dependencies:
 
-   -  Document your code, including API endpoints and usage.
-   -  Add comments to explain complex logic or critical sections.
-   -  Update or create a README file with instructions for running the app locally.
+```bash
+npm install
+```
 
-9. **Refinement and Optimization:**
+## Usage
 
-   -  Refactor code for readability and maintainability.
-   -  Optimize database queries and indexing for better performance.
-   -  Consider security best practices (e.g., rate limiting, CORS headers).
+### Authentication
 
-10.   **Deployment:**
-      -  Prepare the app for deployment.
-      -  Choose a hosting platform (e.g., Heroku, AWS, or others).
-      -  Deploy the application and configure environment variables.
+-  Use the `/register` and `/login` routes for user registration and login.
+-  Include the JWT token received upon login in the Authorization header for authenticated routes.
+
+### User Profiles
+
+-  Access and update user profiles using the `/profile` route.
+
+### To-Do Lists
+
+-  Create, update, and delete to-do lists using the `/list` route.
+-  Manage individual tasks within a list using nested routes under `/list/:listId/todos`.
+
+### Admin and SuperAdmin
+
+-  Access admin functionalities using the `/Dashboard` route (requires Admin or SuperAdmin role).
+-  SuperAdmins can perform additional tasks through the `/SuperBoard` route.
+
+## Routes
+
+-  **Authentication Routes:**
+
+   -  `/register` (POST): User registration.
+   -  `/login` (POST): User login.
+
+-  **User Routes:**
+
+   -  `/profile` (GET, PUT): Access and update user profiles.
+
+-  **To-Do List Routes:**
+
+   -  `/list` (POST): Create a new to-do list.
+   -  `/list/:listId` (GET, PUT, DELETE): Access and manage individual to-do lists.
+
+-  **To-Do Routes (Within a List):**
+
+   -  `/list/:listId/todos` (GET): Get all to-dos in a list.
+   -  `/list/:listId/todos/:todoId` (GET, PUT, DELETE): Access and manage individual to-dos within a list.
+
+-  **Admin and SuperAdmin Routes:**
+   -  `/Dashboard` (GET): Access admin functionalities (requires Admin or SuperAdmin role).
+   -  `/SuperBoard` (GET): Access SuperAdmin functionalities.
+
+## Error Handling
+
+The API includes comprehensive error handling for various scenarios. Common HTTP error codes are used, along with detailed error messages in the response.
+
+## Testing
+
+The project includes unit tests for critical functions and integration tests for API routes. Ensure to run tests to verify the correctness of the implementation.
+
+## Documentation
+
+For detailed API documentation, refer to the provided code comments, API routes, and the [Postman collection](link_to_postman_collection).
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
