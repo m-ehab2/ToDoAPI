@@ -9,11 +9,12 @@ const getUserInfo = async (req, res, next) => {
         const user = await User.findById(userId).select('-password');
 
         if (!user) {
-            return res.status(404).json({ success: false, error: 'User not found' });
+            throw 'User not found';
         }
 
         res.status(200).json({ success: true, data: user });
     } catch (error) {
+        console.log(error);
         next(error)
     }
 

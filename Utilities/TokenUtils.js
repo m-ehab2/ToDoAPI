@@ -9,4 +9,5 @@ const generateAuthToken = (userId, role) => {
 const decodeReqHeader = (req) => {
     return jwt.decode(req.header('Authorization').split(' ')[1]);
 };
+
 module.exports = { generateAuthToken, decodeReqHeader }

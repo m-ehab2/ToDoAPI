@@ -7,7 +7,9 @@ const authRoutes = require('./Routes/auth');
 const userRouter = require('./Routes/User')
 const adminRouter = require('./Routes/admin')
 const superRouter = require('./Routes/superRoute')
+const listRouter = require('./Routes/listRouter')
 const { checkRole } = require("./Middlewares/rbac");
+const { verifyToken } = require("./Middlewares/verifyToken");
 
 //----------------------------------Load Env Variables
 require('dotenv').config();
@@ -21,7 +23,8 @@ app.use(morgan('dev'))
 
 //----------------------------------Routes
 app.use('/', authRoutes)
-app.use('/profile', checkRole(['User', 'Admin', 'SuperAdmin']), userRouter)
+app.use('/profile', verifyToken(), userRouter)
+app.use('/list', verifyToken(), listRouter)
 app.use('/Dashboard', checkRole(['Admin', 'SuperAdmin']), adminRouter)
 app.use('/SuperBoard', checkRole('SuperAdmin'), superRouter);
 

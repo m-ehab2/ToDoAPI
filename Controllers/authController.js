@@ -33,12 +33,13 @@ const login = async (req, res, next) => {
         }
         const passwordMatched = await bcrypt.compare(password, user.password);
         if (!passwordMatched) {
-            throw "Invalud credentials"
+            throw "Invalid credentials"
         }
         const token = generateAuthToken(user._id, user.role);
         res.status(200).json({ success: true, message: "logged in Successfully", User: user.username, token: token });
 
     } catch (error) {
+        console.log(error);
         next(error)
     }
 }
