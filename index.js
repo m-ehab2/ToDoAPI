@@ -10,6 +10,9 @@ const superRouter = require('./Routes/superRoute')
 const listRouter = require('./Routes/listRouter')
 const { checkRole } = require("./Middlewares/rbac");
 const { verifyToken } = require("./Middlewares/verifyToken");
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+
 
 //----------------------------------Load Env Variables
 require('dotenv').config();
@@ -31,7 +34,11 @@ app.use('/SuperBoard', checkRole('SuperAdmin'), superRouter);
 //----------------------------------Error Handler
 app.use(errorHandler);
 
-connect(process.env.URI_Local)
-app.listen(process.env.PORT, () => {
-    console.log('Server Started');
+io.on('connection', (socket) => {
+    socket.emit('connect', { message: 'a new client connected' })
 })
+
+connect(process.env.URI_Local)
+server.listen(process.env.PORT, function () {
+    console.log(`Listening on port ${process.env.PORT}`);
+});
