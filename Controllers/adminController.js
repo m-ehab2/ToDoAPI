@@ -14,4 +14,13 @@ const deleteUser = async (req, res, next) => {
         next(error)
     }
 }
-module.exports = { deleteUser };
+const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await User.find({}, { email: 1, lists: 1 });
+        res.status(200).json({ status: 'Success', data: users, message: 'Users fetched successfully.' });
+
+    } catch (error) {
+        next(error)
+    }
+}
+module.exports = { deleteUser, getAllUsers };

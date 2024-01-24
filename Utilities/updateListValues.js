@@ -10,7 +10,6 @@ const updateList = async (listId) => {
     TodosArray.forEach((ele) => {
         if (ele.dueDate <= currentDate) {
             behindSchedule = true;
-            console.log(behindSchedule);
         }
         if (ele.completed === false) {
             allDone = false;
