@@ -16,7 +16,7 @@ const deleteUser = async (req, res, next) => {
 }
 const getAllUsers = async (req, res, next) => {
     try {
-        const users = await User.find({}, { email: 1, lists: 1 });
+        const users = await User.find({}, { email: 1, lists: 1, role: 1 });
         res.status(200).json({ status: 'Success', data: users, message: 'Users fetched successfully.' });
 
     } catch (error) {

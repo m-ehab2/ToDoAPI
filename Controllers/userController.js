@@ -1,18 +1,17 @@
 const User = require('../Models/User');
 const bcrypt = require('bcryptjs');
 const { decodeReqHeader } = require('../Utilities/TokenUtils');
-const { toDosNotification } = require('../WebSocket/ToDosNotification');
+const { scheduleNotifications, schedulerTest } = require('../WebSocket/ToDosNotification')
 require('dotenv').config();
 
 const getUserInfo = async (req, res, next) => {
     try {
         const { userId } = decodeReqHeader(req);
         const user = await User.findById(userId).select('-password');
-
+        scheduleNotifications(req);
         if (!user) {
             throw 'User not found';
         }
-        toDosNotification(req);
         res.status(200).json({ success: true, data: user });
     } catch (error) {
         console.log(error);
